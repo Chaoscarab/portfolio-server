@@ -1,26 +1,409 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6eee2;
+  --surface: #fffdf8;
+  --ink: #2f241d;
+  --ink-soft: #58453a;
+  --brand: #d96b3f;
+  --brand-dark: #9f4420;
+  --line: #e8d8c7;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-foreground: var(--ink);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 5% 15%, rgba(217, 107, 63, 0.16), transparent 42%),
+    radial-gradient(circle at 92% 85%, rgba(168, 119, 87, 0.18), transparent 40%),
+    linear-gradient(180deg, #fff8ef 0%, #f5ead9 100%);
+  font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
+}
+
+.portfolio-page {
+  width: min(1150px, calc(100% - 2rem));
+  margin: 1rem auto 2rem;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.portfolio-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: rgba(255, 253, 248, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  box-shadow: 0 12px 25px rgba(83, 51, 35, 0.08);
+  position: sticky;
+  top: 0.75rem;
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+.nav-brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.portfolio-nav nav {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.portfolio-nav a {
+  text-decoration: none;
+  color: var(--ink);
+  padding: 0.45rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.portfolio-nav a:hover {
+  border-color: var(--line);
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+  box-shadow: 0 18px 35px rgba(52, 32, 22, 0.08);
+  padding: 1.2rem;
+  display: grid;
+  grid-template-columns: minmax(300px, 320px) 1fr;
+  gap: 1.2rem;
+}
+
+.about-card h1,
+.proficiencies-section h2,
+.projects-section h2,
+.project-body h3 {
+  font-family: var(--font-geist-mono), "Trebuchet MS", sans-serif;
+  margin: 0;
+}
+
+.about-card h1 {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+.about-card p,
+.about-card ul {
+  color: var(--ink-soft);
+}
+
+.selfie-wrap {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.selfie {
+  width: 100%;
+  height: 100%;
+  min-height: 305px;
+  object-fit: cover;
+  object-position: 4% 32%;
+  transform: scale(1.05);
+  display: block;
+}
+
+.accent {
+  color: var(--brand-dark);
+  font-weight: 700;
+}
+
+.meet {
+  margin-top: 1.25rem;
+  margin-bottom: 0.65rem;
+  font-weight: 600;
+}
+
+.scheduler-trigger {
+  border: 0;
+  cursor: pointer;
+  margin-bottom: 0.9rem;
+}
+
+.scheduler-copy h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.scheduler-copy p {
+  margin: 0.35rem 0 0;
+}
+
+.scheduler-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(47, 36, 29, 0.5);
+  backdrop-filter: blur(6px);
+}
+
+.scheduler-modal {
+  width: min(960px, 100%);
+  max-height: min(90vh, 52rem);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 1.2rem;
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.99), rgba(246, 238, 226, 0.95));
+  box-shadow: 0 24px 60px rgba(52, 32, 22, 0.28);
+  padding: 1rem;
+}
+
+.scheduler-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.scheduler-close {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  padding: 0.5rem 0.85rem;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scheduler-close:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(112, 56, 33, 0.16);
+}
+
+.scheduler-frame {
+  width: 100%;
+  min-height: 34rem;
+  height: min(70vh, 42rem);
+  border: 0;
+  border-radius: 0.8rem;
+  background: #fff;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pill {
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  border-radius: 999px;
+  padding: 0.48rem 0.9rem;
+  font-size: 0.92rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(112, 56, 33, 0.24);
+}
+
+.proficiencies-section,
+.projects-section {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+  padding: 1.05rem;
+}
+
+.skills-grid {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  gap: 0.75rem;
+}
+
+.skill-tile {
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: #fff;
+  padding: 0.72rem;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.5rem;
+}
+
+.skill-tile img {
+  width: 34px;
+  height: 34px;
+}
+
+.skill-tile span {
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.projects-section {
+  overflow: hidden;
+}
+
+.projects-scroll {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(250px, 300px);
+  gap: 0.82rem;
+  overflow-x: auto;
+  padding-bottom: 0.28rem;
+  scroll-snap-type: x mandatory;
+}
+
+.projects-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.projects-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #ceb093;
+}
+
+.project-card {
+  scroll-snap-align: start;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  display: block;
+  padding: 0.75rem;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.mimosa-wordmark {
+  background: #fff;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-weight: 800;
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  letter-spacing: 0.02em;
+}
+
+.mimosa-logo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.project-body {
+  padding: 0.82rem;
+}
+
+.project-body h3 {
+  margin-bottom: 0.45rem;
+}
+
+.project-body p {
+  margin: 0;
+  color: var(--ink-soft);
+  min-height: 2.8rem;
+}
+
+.project-body a {
+  display: inline-block;
+  margin-top: 0.78rem;
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+
+@media (max-width: 980px) {
+  .about-card {
+    grid-template-columns: 1fr;
+  }
+
+  .selfie {
+    min-height: 220px;
+    object-position: 30% 32%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.counterPage {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.resume-page {
+  width: min(1150px, calc(100% - 2rem));
+  margin: 1rem auto 2rem;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.resume-frame-wrap {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1.1rem;
+  overflow: hidden;
+  height: calc(100vh - 130px);
+  min-height: 650px;
+}
+
+.resume-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .scheduler-modal {
+    padding: 0.85rem;
+  }
+
+  .scheduler-modal-header {
+    flex-direction: column;
+  }
+
+  .scheduler-close {
+    align-self: flex-start;
+  }
+
+  .scheduler-frame {
+    min-height: 28rem;
+    height: 65vh;
+  }
+
+  .resume-frame-wrap {
+    min-height: 70vh;
+    height: 70vh;
+  }
 }
