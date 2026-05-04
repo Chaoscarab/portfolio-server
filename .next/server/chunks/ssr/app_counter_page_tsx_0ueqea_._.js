@@ -1,0 +1,3 @@
+module.exports=[21420,a=>{"use strict";var b=a.i(87924),c=a.i(38246),d=a.i(72131);a.s(["default",0,function(){let[a,e]=(0,d.useState)(0);return(0,b.jsxs)("div",{className:"counterPage",children:[(0,b.jsx)(c.default,{href:"/",children:"home"}),(0,b.jsx)("button",{onClick:()=>e(a=>a+1),children:"Increment"}),(0,b.jsx)("span",{children:a}),(0,b.jsx)("button",{onClick:()=>e(a=>a-1),children:"Decrement"})]})}])}];
+
+//# sourceMappingURL=app_counter_page_tsx_0ueqea_._.js.map

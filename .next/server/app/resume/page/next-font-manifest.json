@@ -1,0 +1,11 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/app/resume/page": [
+      "static/media/9a800f173b8d9e8f-s.p.129r4siq6of2c.woff2",
+      "static/media/25ac599a9d1104ab-s.p.0a2nnsftr-3-4.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}

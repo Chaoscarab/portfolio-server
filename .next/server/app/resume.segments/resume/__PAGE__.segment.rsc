@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/01xlw8hd842-c.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/0ka051yepewro.js"],""]
+3:I[97367,["/_next/static/chunks/01xlw8hd842-c.js","/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"resume-page","children":[["$","header",null,{"className":"portfolio-nav","children":[["$","div",null,{"className":"nav-brand","children":"Brandon VanFossen"}],["$","nav",null,{"children":["$","$L2",null,{"href":"/","children":"Home"}]}]]}],["$","section",null,{"className":"resume-frame-wrap","children":["$","iframe",null,{"src":"/resume.pdf#toolbar=1&navpanes=0&view=FitH","title":"Brandon VanFossen Resume","className":"resume-frame","children":["$","p",null,{"children":["Your browser cannot display embedded PDFs. You can still",["$","a",null,{"href":"/resume.pdf","download":true,"children":"download the resume here"}],"."]}]}]}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/0ka051yepewro.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"vZLIRaoTwO-Ni3I510bKM"}
+5:null
